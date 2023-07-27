@@ -1,9 +1,14 @@
 import datetime
 from django.shortcuts import redirect, render
 from . import models
+from django.contrib.auth.decorators import user_passes_test,login_required
+from django.contrib.auth import authenticate,login,logout
 # Create your views here.
 
+# def isAdmin(user):
+#     return user
 
+@login_required()
 def adminPanel(request):
     if (request.method == "POST"):
         image = request.POST["image"]
@@ -24,7 +29,7 @@ def adminPanel(request):
     model = {
         'blogValue': values
     }
-    return render(request, 'Admin/AdminPanel.html', model)
+    return render(request, 'admin/AdminPanel.html', model)
 
 
 def updated(request, id):
@@ -32,7 +37,7 @@ def updated(request, id):
     model = {
         'value': findValues
     }
-    return render(request, 'Admin/Update.html', model)
+    return render(request, 'admin/Update.html', model)
     
 
 

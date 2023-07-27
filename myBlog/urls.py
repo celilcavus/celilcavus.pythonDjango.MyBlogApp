@@ -18,6 +18,7 @@ from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('',include('BlogView.urls')),
     path('myAdminPanel',include('myAdminPanel.urls')),
-    path('',include('BlogView.urls'))
+    path('accountant',include('accountant.urls'))
 ]

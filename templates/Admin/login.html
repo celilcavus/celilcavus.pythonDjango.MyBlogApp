@@ -1,0 +1,28 @@
+{% extends 'partials/_layout.html' %}
+
+{% block content %}
+  <main>
+    <form action="{% url 'admin_login' %}" method="post">
+        {% csrf_token %}
+        {% if error %}
+          <div class="alert alert-danger">
+            {{error}}
+          </div>
+        {% endif %}
+        
+            <label for="">Username</label>
+            <input type="text" name="username" class="form-control">
+        
+        <br>
+       
+            <label for="">Password</label>
+            <input type="password" name="password" class="form-control">
+        
+        <br>
+        
+            <button type="submit" class="btn btn-primary">login</button>
+       
+    </form>
+  </main>
+{% endblock content %}
+
